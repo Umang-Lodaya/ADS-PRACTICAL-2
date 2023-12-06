@@ -34,8 +34,7 @@ def predict():
     df.drop(["Unnamed: 2", "Unnamed: 3", "Unnamed: 4"], axis=1, inplace=True)
     df["label"] = df["type"].map({"ham": 0, "spam": 1})
     X = df["text"]
-    y = df["label"]                 # UMANG KIRIT LODAYA
-                                    # 60009200032 - D11
+    y = df["label"]
 
     from sklearn.feature_extraction.text import CountVectorizer
     from sklearn.model_selection import GridSearchCV
@@ -50,9 +49,7 @@ def predict():
 
     from sklearn.naive_bayes import MultinomialNB
 
-    clf = MultinomialNB(alpha = 0.001, force_alpha=True)
-    # param = {'alpha': [0.00001, 0.0001, 0.001, 0.1, 1, 10, 100,1000]}
-    # clf = GridSearchCV(clf, param, scoring = 'roc_auc', cv = 10, return_train_score = True)  
+    clf = MultinomialNB(alpha = 0.001, force_alpha=True) 
     clf.fit(X_train, y_train)
     clf.score(X_test, y_test)
 
